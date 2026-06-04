@@ -10,6 +10,9 @@
 
 .top-panel {
   flex-shrink: 0;
+  max-height: 45dvh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   padding: 12px 16px;
   padding-top: max(12px, env(safe-area-inset-top));
   padding-left: max(16px, env(safe-area-inset-left));
@@ -19,11 +22,49 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
-.coordinates-fields {
+.coordinate-groups {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 100%;
+  gap: 12px;
+}
+
+.coordinate-group {
+  padding: 10px 12px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.coordinate-group--active {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.coordinate-group-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.coordinate-group-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1d4ed8;
+  background: #dbeafe;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.coordinate-group-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .field {
@@ -77,12 +118,35 @@
   touch-action: manipulation;
 }
 
+.marker-secondary {
+  background: transparent;
+  border: none;
+}
+
+.marker-secondary-pin {
+  width: 28px;
+  height: 28px;
+  background: #dc2626;
+  border: 3px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  margin-left: 0;
+  margin-top: -4px;
+}
+
 @media (min-width: 768px) {
   .top-panel {
+    max-height: none;
     padding: 14px 24px;
   }
 
-  .coordinates-fields {
-    max-width: 400px;
+  .coordinate-groups {
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .coordinate-group {
+    flex: 1;
   }
 }

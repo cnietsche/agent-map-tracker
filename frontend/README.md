@@ -17,9 +17,9 @@ Abra a URL exibida no terminal (geralmente `http://localhost:5173`).
 
 ## Comportamento
 
-- **Barra superior:** campos **X** (longitude) e **Y** (latitude), empilhados verticalmente; o mapa ocupa o restante da tela.
-- **Mapa:** clique em qualquer ponto para posicionar um pin e preencher X e Y automaticamente.
-- Um novo clique atualiza o pin e os valores.
+- **Barra superior:** dois pontos (**Ponto 1** e **Ponto 2**), cada um com **X** (longitude) e **Y** (latitude).
+- **Mapa:** o 1º clique preenche o Ponto 1, o 2º o Ponto 2, o 3º atualiza o Ponto 1 novamente, e assim alterna.
+- Dois pins no mapa (azul = Ponto 1, vermelho = Ponto 2). O grupo destacado indica qual receberá o próximo clique.
 
 ## Docker
 
