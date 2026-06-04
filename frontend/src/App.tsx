@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import { LeftPanel } from './components/LeftPanel'
 import { MapView } from './components/MapView'
+import { TopPanel } from './components/TopPanel'
 import type { Coordinates } from './types'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
 
   return (
     <div className="app">
-      <LeftPanel coordinates={coordinates} />
+      <TopPanel coordinates={coordinates} />
       <main className="map-area">
         <MapView coordinates={coordinates} onMapClick={handleMapClick} />
       </main>

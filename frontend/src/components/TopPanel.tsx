@@ -7,35 +7,35 @@ function formatCoordinate(value: number | undefined): string {
   return value.toFixed(DECIMAL_PLACES)
 }
 
-type LeftPanelProps = {
+type TopPanelProps = {
   coordinates: Coordinates | null
 }
 
-export function LeftPanel({ coordinates }: LeftPanelProps) {
+export function TopPanel({ coordinates }: TopPanelProps) {
   return (
-    <aside className="left-panel">
-      <div className="coordinates-row">
+    <header className="top-panel">
+      <div className="coordinates-fields">
         <label className="field">
-          <span className="field-label">X</span>
+          <span className="field-label">X — Longitude</span>
           <input
             type="text"
             readOnly
-            placeholder="Longitude"
+            placeholder="Clique no mapa"
             value={formatCoordinate(coordinates?.lng)}
             aria-label="Longitude (X)"
           />
         </label>
         <label className="field">
-          <span className="field-label">Y</span>
+          <span className="field-label">Y — Latitude</span>
           <input
             type="text"
             readOnly
-            placeholder="Latitude"
+            placeholder="Clique no mapa"
             value={formatCoordinate(coordinates?.lat)}
             aria-label="Latitude (Y)"
           />
         </label>
       </div>
-    </aside>
+    </header>
   )
 }

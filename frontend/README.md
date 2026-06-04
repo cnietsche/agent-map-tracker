@@ -17,7 +17,7 @@ Abra a URL exibida no terminal (geralmente `http://localhost:5173`).
 
 ## Comportamento
 
-- **Painel esquerdo:** campos **X** (longitude) e **Y** (latitude), lado a lado no topo.
+- **Barra superior:** campos **X** (longitude) e **Y** (latitude), empilhados verticalmente; o mapa ocupa o restante da tela.
 - **Mapa:** clique em qualquer ponto para posicionar um pin e preencher X e Y automaticamente.
 - Um novo clique atualiza o pin e os valores.
 
