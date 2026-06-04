@@ -1,0 +1,65 @@
+.app {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.left-panel {
+  flex-shrink: 0;
+  width: 300px;
+  padding: 16px;
+  border-right: 1px solid #e5e4e7;
+  background: #f8f8f9;
+  box-sizing: border-box;
+}
+
+.coordinates-row {
+  display: flex;
+  gap: 12px;
+}
+
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.field input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-family: ui-monospace, Consolas, monospace;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background: #fff;
+  color: #111827;
+  box-sizing: border-box;
+}
+
+.field input::placeholder {
+  color: #9ca3af;
+}
+
+.field input:read-only {
+  cursor: default;
+}
+
+.map-area {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+}
