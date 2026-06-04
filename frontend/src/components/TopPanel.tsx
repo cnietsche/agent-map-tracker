@@ -1,30 +1,15 @@
-import type { CoordinatePoints, CoordinateSlot } from '../types'
-import { CoordinateGroup } from './CoordinateGroup'
+import type { RoutePoints } from '../types'
+import { formatRouteLine } from '../utils/coordinates'
 
 type TopPanelProps = {
-  points: CoordinatePoints
-  nextSlot: CoordinateSlot
+  points: RoutePoints
 }
 
-export function TopPanel({ points, nextSlot }: TopPanelProps) {
+export function TopPanel({ points }: TopPanelProps) {
   return (
-    <header className="top-panel">
-      <div className="coordinate-groups">
-        <CoordinateGroup
-          title="Ponto 1"
-          coordinates={points.pointA}
-          isActive={nextSlot === 'A'}
-          xLabel="X — Longitude"
-          yLabel="Y — Latitude"
-        />
-        <CoordinateGroup
-          title="Ponto 2"
-          coordinates={points.pointB}
-          isActive={nextSlot === 'B'}
-          xLabel="X — Longitude"
-          yLabel="Y — Latitude"
-        />
-      </div>
+    <header className="top-bar">
+      <p className="coord-line">{formatRouteLine('Início', points.start)}</p>
+      <p className="coord-line">{formatRouteLine('Fim', points.end)}</p>
     </header>
   )
 }

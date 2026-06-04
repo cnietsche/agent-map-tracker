@@ -2,11 +2,10 @@ import L from 'leaflet'
 import iconUrl from 'leaflet/dist/images/marker-icon.png'
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
 import shadowUrl from 'leaflet/dist/images/marker-shadow.png'
-import { MapContainer, Marker, TileLayer } from 'react-leaflet'
-import type { CoordinatePoints } from '../types'
-import { MapClickHandler } from './MapClickHandler'
+import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet'
+import type { RoutePoints } from '../types'
 
-const defaultIcon = L.icon({
+const startIcon = L.icon({
   iconUrl,
   iconRetinaUrl,
   shadowUrl,
@@ -14,46 +13,51 @@ const defaultIcon = L.icon({
   iconAnchor: [12, 41],
 })
 
-const secondaryIcon = L.divIcon({
-  className: 'marker-secondary',
-  html: '<div class="marker-secondary-pin"></div>',
+const endIcon = L.divIcon({
+  className: 'end-marker',
+  html: '<div class="end-marker__pin"></div>',
   iconSize: [28, 28],
   iconAnchor: [14, 28],
 })
 
-L.Marker.prototype.options.icon = defaultIcon
-
-const BRAZIL_CENTER: [number, number] = [-14.235, -51.925]
-const DEFAULT_ZOOM = 4
+const MAP_CENTER: [number, number] = [-14.235, -51.925]
+const MAP_ZOOM = 4
 
 type MapViewProps = {
-  points: CoordinatePoints
+  points: RoutePoints
   onMapClick: (lng: number, lat: number) => void
+}
+
+function MapClickHandler({
+  onMapClick,
+}: {
+  onMapClick: (lng: number, lat: number) => void
+}) {
+  useMapEvents({
+    click({ latlng }) {
+      onMapClick(latlng.lng, latlng.lat)
+    },
+  })
+
+  return null
 }
 
 export function MapView({ points, onMapClick }: MapViewProps) {
   return (
-    <MapContainer
-      center={BRAZIL_CENTER}
-      zoom={DEFAULT_ZOOM}
-      className="map-container"
-    >
+    <MapContainer center={MAP_CENTER} zoom={MAP_ZOOM} className="map">
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <MapClickHandler onMapClick={onMapClick} />
-      {points.pointA && (
+      {points.start && (
         <Marker
-          position={[points.pointA.lat, points.pointA.lng]}
-          icon={defaultIcon}
+          position={[points.start.lat, points.start.lng]}
+          icon={startIcon}
         />
       )}
-      {points.pointB && (
-        <Marker
-          position={[points.pointB.lat, points.pointB.lng]}
-          icon={secondaryIcon}
-        />
+      {points.end && (
+        <Marker position={[points.end.lat, points.end.lng]} icon={endIcon} />
       )}
     </MapContainer>
   )

@@ -3,9 +3,9 @@ export type Coordinates = {
   lat: number
 }
 
-export type CoordinateSlot = 'A' | 'B'
+export type ClickTarget = 'start' | 'end'
 
-export type CoordinatePoints = {
-  pointA: Coordinates | null
-  pointB: Coordinates | null
+export type RoutePoints = {
+  start: Coordinates | null
+  end: Coordinates | null
 }
